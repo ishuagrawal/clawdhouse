@@ -1,4 +1,4 @@
-# claude-mods
+# clawdhouse
 
 Mods for [Claude Code](https://claude.com/claude-code): panes, bands and buddies built on Claude Code's function hooks.
 
@@ -13,32 +13,32 @@ Mods for [Claude Code](https://claude.com/claude-code): panes, bands and buddies
 This repo is a Claude Code plugin marketplace. Inside Claude Code:
 
 ```
-/plugin marketplace add ishuagrawal/claude-mods
-/plugin install clawd-buddy@claude-mods
+/plugin marketplace add ishuagrawal/clawdhouse
+/plugin install clawd-buddy@clawdhouse
 ```
 
 Or from a shell:
 
 ```bash
-claude plugin marketplace add ishuagrawal/claude-mods
+claude plugin marketplace add ishuagrawal/clawdhouse
 ```
 
 ```bash
-claude plugin install clawd-buddy@claude-mods --config name=YourName
+claude plugin install clawd-buddy@clawdhouse --config name=YourName
 ```
 
-Start a new session (or run `/reload-plugins`) and Clawd shows up. Pull updates later with `claude plugin marketplace update claude-mods`.
+Start a new session (or run `/reload-plugins`) and Clawd shows up. Pull updates later with `claude plugin marketplace update clawdhouse`.
 
 ## Hack on a mod
 
 Clone the repo and load a mod straight from disk. Saving a file hot-reloads it in the running session.
 
 ```bash
-git clone https://github.com/ishuagrawal/claude-mods.git
+git clone https://github.com/ishuagrawal/clawdhouse.git
 ```
 
 ```bash
-claude --plugin-dir ./claude-mods/clawd-buddy
+claude --plugin-dir ./clawdhouse/clawd-buddy
 ```
 
 In the desktop app, where you can't pass flags, add the folder to the `env` block of `~/.claude/settings.json` instead:
@@ -46,12 +46,12 @@ In the desktop app, where you can't pass flags, add the folder to the `env` bloc
 ```json
 {
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "/absolute/path/to/claude-mods/clawd-buddy"
+    "CLAUDE_CODE_PLUGIN_DIRS": "/absolute/path/to/clawdhouse/clawd-buddy"
   }
 }
 ```
 
-If you also installed the mod from the marketplace, disable that copy (`claude plugin disable clawd-buddy@claude-mods`) so it doesn't load twice.
+If you also installed the mod from the marketplace, disable that copy (`claude plugin disable clawd-buddy@clawdhouse`) so it doesn't load twice.
 
 ### Types, checks and tests
 

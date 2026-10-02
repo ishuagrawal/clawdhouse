@@ -7,8 +7,8 @@ Everything is drawn in code (see `hooks/engine.ts`). There are no image files to
 ## Install
 
 ```
-/plugin marketplace add ishuagrawal/claude-mods
-/plugin install clawd-buddy@claude-mods
+/plugin marketplace add ishuagrawal/clawdhouse
+/plugin install clawd-buddy@clawdhouse
 ```
 
 See the [repo README](../README.md) for loading it from a clone instead.
@@ -19,7 +19,7 @@ See the [repo README](../README.md) for loading it from a clone instead.
 | --- | --- | --- |
 | `name` | `friend` | What Clawd calls you in greetings and cheers. |
 
-Set it with `/plugin configure clawd-buddy@claude-mods`, or pass `--config name=YourName` when installing from the shell.
+Set it with `/plugin configure clawd-buddy@clawdhouse`, or pass `--config name=YourName` when installing from the shell.
 
 ## Commands
 

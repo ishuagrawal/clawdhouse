@@ -1,5 +1,5 @@
 {
-  "name": "claude-mods",
+  "name": "clawdhouse",
   "owner": { "name": "Ishu Agrawal", "url": "https://github.com/ishuagrawal" },
   "metadata": {
     "description": "Mods for Claude Code: panes, bands and buddies built on function hooks"
