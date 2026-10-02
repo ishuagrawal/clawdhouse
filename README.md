@@ -6,6 +6,10 @@ Mods for [Claude Code](https://claude.com/claude-code): panes, bands and buddies
 | --- | --- |
 | [clawd-buddy](./clawd-buddy) | A pixel Clawd who lives above your prompt (or in a side pane) and reacts to what Claude is doing: reading, editing, running tests, waiting on you. |
 
+![Clawd's 40 moods, each in the Claude Code desktop app](./media/clawd-states.png)
+
+▶ [Watch Clawd run through every mood, one per beat](./media/clawd-beat.mp4) (36 s, with sound)
+
 > Function hooks are an early-access Claude Code feature and the API may change between releases. These mods were built and tested on Claude Code 2.1.286.
 
 ## Install
@@ -77,6 +81,7 @@ claude plugin test ./clawd-buddy
   hooks/register.tsx              exports register(on, options)
   types/index.d.ts                the mod's $.state contract
   tests/*.test.ts                 claude plugin test
+media/                            the promo image and video, rendered from the mod's engine
 ```
 
 To add a mod, give it its own folder and add an entry to `.claude-plugin/marketplace.json`.

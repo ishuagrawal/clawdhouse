@@ -2,6 +2,10 @@
 
 A pixel Clawd who keeps you company while Claude works. He sits on a small stage above the prompt (or in a side pane) and acts out what Claude is doing: thinking, reading files, editing, running tests, building, committing, browsing, waiting for your OK. He cheers when a turn finishes, sulks when it fails, and nods off after a minute and a half of quiet.
 
+![All 40 moods](../media/clawd-states.png)
+
+▶ [Every mood, one per beat](../media/clawd-beat.mp4)
+
 Everything is drawn in code (see `hooks/engine.ts`). There are no image files to download.
 
 ## Install

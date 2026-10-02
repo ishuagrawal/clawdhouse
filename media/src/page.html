@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+:root {
+  --line: #383733;
+  --line-2: #45443f;
+  --text: #ecebe4;
+  --muted: #a5a298;
+  --faint: #6f6c65;
+  --clawd: #da7758;
+  --sans: -apple-system, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #121110; color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+code, .mono { font-family: var(--mono); }
+
+/* ── Grid page ──────────────────────────────────────────── */
+.sheet { padding: 72px 80px 84px; background: radial-gradient(1400px 700px at 50% -10%, #2c1d17 0%, rgba(18,17,16,0) 70%), #121110; }
+.sheet h1 { font-size: 64px; letter-spacing: -.02em; font-weight: 700; }
+.sheet h1 span { color: var(--clawd); }
+.sheet .sub { margin-top: 10px; font-size: 22px; color: var(--muted); }
+.sheet .sub code { color: var(--text); background: #262624; border: 1px solid var(--line); padding: 2px 8px; border-radius: 7px; font-size: 19px; }
+.grid { margin-top: 52px; display: grid; grid-template-columns: repeat(8, 520px); gap: 40px 28px; }
+.tag { display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px 4px; font-family: var(--mono); }
+.tag .n { color: var(--faint); font-size: 14px; }
+.tag .m { color: var(--text); font-size: 17px; font-weight: 600; }
+
+/* ── The real Code tab (desktop app, dark), for the grid ──── */
+/* Measured from screenshots of the Claude desktop app with clawd-buddy
+   loaded. The fonts are the app's own, read from the installed app. */
+@font-face { font-family: "Anthropic Sans"; font-weight: 300 800; src: url("file:///Applications/Claude.app/Contents/Resources/fonts/AnthropicSans-Romans-Variable-25x258.ttf"); }
+@font-face { font-family: "Anthropic Sans"; font-style: italic; font-weight: 300 800; src: url("file:///Applications/Claude.app/Contents/Resources/fonts/AnthropicSans-Italics-Variable-25x258.ttf"); }
+.app { --a-bg: #151515; --a-text: #eeede9; --a-muted: #7e7c76; --a-soft: #a6a59f; --a-clay: #d56e52; --a-well: #212121; --a-card: #191918; --a-opt: #252524; --a-edge: #30302f;
+  width: 820px; height: 640px; display: flex; flex-direction: column; background: var(--a-bg); color: var(--a-text); border: 1px solid #2a2a29; border-radius: 12px; overflow: hidden;
+  font-family: "Anthropic Sans", var(--sans); font-size: 14px; line-height: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.app .ahead { height: 50px; flex: none; display: flex; align-items: center; gap: 5px; padding: 0 12px 0 13px; }
+.app .ahead .ico { width: 23px; height: 23px; border-radius: 6px; background: #13233d; display: grid; place-items: center; }
+.app .ahead .t { font-weight: 400; }
+.app .ahead .chev { color: var(--a-soft); margin: 0 9px 0 3px; display: flex; }
+.app .ahead .chip { background: #2c2c2c; color: var(--a-soft); font-size: 13px; padding: 0 5px; border-radius: 5px; line-height: 21px; }
+.app .ahead .sp { flex: 1; }
+.app .ahead .tools { display: flex; gap: 16px; color: var(--a-soft); }
+.app .abody { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.app .acol { width: 768px; }
+.app .ascroll { display: flex; flex-direction: column; gap: 10px; padding-bottom: 22px; }
+.app .r-user { display: flex; justify-content: flex-end; margin: 14px 0 26px; }
+.app .r-user div { background: var(--a-well); border-radius: 12px; padding: 10px 12px; max-width: 640px; }
+.app .r-sum { color: var(--a-muted); display: flex; align-items: center; gap: 6px; }
+.app .r-note { color: var(--a-muted); }
+.app .r-stat { display: flex; align-items: center; gap: 13px; color: var(--a-muted); font-size: 13px; margin: 16px 0 0 2px; }
+.app .r-stat .burst { width: 18px; height: 18px; flex: none; }
+.app .adock { flex: none; display: flex; flex-direction: column; align-items: center; padding-bottom: 6px; }
+.app .adock > * { width: 768px; }
+.app .qcard { background: var(--a-card); border: 1px solid var(--a-edge); border-radius: 10px; padding: 11px 11px 11px; margin-bottom: 6px; }
+.app .qcard .qt { display: flex; align-items: flex-start; gap: 12px; font-weight: 600; padding: 0 1px 12px; }
+.app .qcard .qt span { flex: 1; }
+.app .qcard .qt i { display: flex; gap: 14px; color: var(--a-soft); padding-top: 3px; }
+.app .qcard .opt { background: var(--a-opt); border-radius: 6px; padding: 8px 8px; margin-top: 3px; display: flex; align-items: center; color: #e2e1de; }
+.app .qcard .opt span { flex: 1; }
+.app .qcard .opt small { display: block; color: #6f6d68; font-size: 12px; line-height: 18px; }
+.app .qcard .opt b { font-weight: 400; font-size: 11px; color: var(--a-muted); border: 1px solid #3a3a39; border-radius: 3px; min-width: 16px; height: 16px; line-height: 14px; text-align: center; }
+.app .qcard .other { display: block; }
+.app .qcard .other em { display: block; margin-top: 8px; font-style: normal; color: #6f6d68; background: var(--a-edge); border: 1px solid #444443; border-radius: 6px; padding: 4px 8px; }
+.app .qcard .cmd { margin: 0 0 3px; background: var(--a-opt); border-radius: 6px; padding: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: var(--a-text); }
+.app .qcard .btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.app .qcard .btns span { background: var(--a-edge); color: #d3d2cf; border-radius: 6px; padding: 0 7px; line-height: 22px; }
+.app .qcard .btns span.go { background: #757574; color: #151514; }
+.app .branch { background: var(--a-well); border-radius: 10px; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 13px; margin-bottom: 6px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: #797872; }
+.app .branch .sp { flex: 1; }
+.app .branch .diff { font-family: "Anthropic Sans", var(--sans); font-size: 14px; background: #2d2d2c; border-radius: 6px; padding: 0 8px; line-height: 26px; }
+.app .branch .diff i { font-style: normal; color: #3fb950; } .app .branch .diff u { text-decoration: none; color: #f0525e; }
+.app .branch .pr { font-family: "Anthropic Sans", var(--sans); font-size: 14px; background: #2d2d2c; color: #797872; border-radius: 6px; padding: 0 8px; line-height: 26px; display: flex; align-items: center; gap: 8px; }
+.app .branch .pr em { border-left: 1px solid #3c3c3a; padding-left: 6px; display: flex; }
+.app .branch .x { margin-left: 8px; display: flex; color: #797872; }
+.app .band2 { background: var(--a-well); border-radius: 10px; padding: 10px 8px 10px; margin-bottom: 6px; }
+.app .band2 .cap { font-family: "Anthropic Sans", var(--sans); font-size: 14px; height: 18px; line-height: 18px; display: flex; gap: 0; }
+.app .band2 .cap b { font-weight: 600; color: var(--a-clay); }
+.app .band2 .cap .dim { color: var(--a-muted); }
+.app .band2 .art svg { display: block; width: 752px; height: auto; }
+.app .ask { background: #1d1d1d; border: 1px solid #4a4a4a; border-radius: 10px; height: 40px; display: flex; align-items: center; padding: 0 11px 0 12px; color: var(--a-muted); }
+.app .ask span { flex: 1; }
+.app .afoot { height: 34px; display: flex; align-items: center; gap: 13px; padding: 0 10px; color: var(--a-soft); font-size: 13px; }
+.app .afoot .sp { flex: 1; }
+.app .afoot .ring { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #2b2b2b; border-top-color: #4a8ff0; }
+.app-sheet { font-family: "Anthropic Sans", var(--sans); }
+.app-grid { grid-template-columns: repeat(5, 820px); gap: 44px 32px; }
+
+/* ── The whole window: the app's sidebar beside the Code tab ─ */
+/* Measured from the same screenshots. The sessions listed are made up. */
+.app.win { flex-direction: row; }
+.app .amain { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.app .aside { width: 288px; flex: none; display: flex; flex-direction: column; background: #121212; border-right: 1px solid #2a2a2a; color: #bbbaaf; }
+.aside .abar { height: 48px; flex: none; display: flex; align-items: center; padding: 0 10px 0 18px; }
+.aside .lights { display: flex; gap: 10px; }
+.aside .lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+.aside .lights i:nth-child(2) { background: #febc2e; }
+.aside .lights i:nth-child(3) { background: #28c840; }
+.aside .hist { display: flex; gap: 8px; margin-left: 12px; color: #a6a59f; }
+.aside .hist svg:last-child { color: #5a5955; }
+.aside .seg { margin-left: auto; display: flex; background: #1e1e1e; border-radius: 8px; padding: 2px; color: #8a8983; }
+.aside .seg span { width: 32px; height: 24px; display: grid; place-items: center; border-radius: 6px; }
+.aside .seg span.on { background: #353435; color: #eeede9; }
+.aside .find { flex: none; margin: 6px 11px 0 10px; height: 26px; display: flex; align-items: center; gap: 8px; padding: 0 9px; background: #1e1e1e; border: 1px solid #353435; border-radius: 7px; color: #7d7b75; }
+.aside .nav { margin: 7px 0 0; }
+.aside .nav div { height: 26.6px; display: flex; align-items: center; gap: 8px; padding-left: 18px; }
+.aside .nav .plus { width: 18px; height: 18px; margin-left: -1px; border-radius: 50%; background: #2b2b2a; display: grid; place-items: center; }
+.aside .nav small { font-size: 12px; color: #a6a59f; background: #262625; border-radius: 4px; padding: 0 5px; line-height: 18px; }
+.aside .nav .dim { color: #7d7b75; }
+.aside .grp { height: 20px; display: flex; align-items: center; margin: 11px 12px 4px 18px; color: #7b7973; font-size: 13px; }
+.aside .grp:first-of-type { margin-top: 24px; }
+.aside .grp span { flex: 1; }
+.aside .sess { height: 26px; margin: 0 9px 1.5px 8px; padding-left: 15px; display: flex; align-items: center; gap: 13px; border-radius: 7px; white-space: nowrap; overflow: hidden; }
+.aside .sess.on { background: #353535; color: #eeede9; }
+.aside .sess i { width: 6px; height: 6px; flex: none; border-radius: 50%; border: 1px solid #474643; }
+.aside .sess i.busy { background: #64635f; border-color: #64635f; }
+.aside .sess i.needs { background: #f8aa34; border-color: #f8aa34; }
+.aside .sess i.unread { background: #2e6ccb; border-color: #2e6ccb; }
+.aside .me { margin-top: auto; height: 44px; flex: none; display: flex; align-items: center; gap: 6px; padding: 0 14px 0 10px; border-top: 1px solid #2a292a; color: #b6b5ab; }
+.aside .me .av { width: 22px; height: 22px; border-radius: 50%; background: #2a2a2a; display: grid; place-items: center; font-size: 10px; color: #bbbaaf; }
+.aside .me small { font-size: 13px; color: #7e7c76; }
+.aside .me .chev { margin-left: 10px; color: #7e7c76; display: flex; }
+.aside .me .cog { margin-left: auto; display: flex; color: #a6a59f; }
+.app .ask .typed { color: var(--a-text); }
+.app .ask .caret { display: inline-block; width: 1.5px; height: 17px; margin-left: 1px; vertical-align: -3px; background: var(--a-text); }
+
+/* ── Video frame: laid out at 1280 × 720, rendered at 1.5× ── */
+.frame { position: relative; width: 1280px; height: 720px; overflow: hidden; font-family: "Anthropic Sans", var(--sans); background: radial-gradient(1000px 540px at 50% 115%, #3a2219 0%, rgba(18,17,16,0) 65%), radial-gradient(600px 340px at 50% -20%, #231b17 0%, rgba(18,17,16,0) 70%), #121110; }
+.frame .app.win { position: absolute; left: 16px; top: 50px; width: 1248px; height: 662px; }
+.top { position: absolute; left: 24px; right: 24px; top: 5px; height: 40px; display: flex; align-items: center; gap: 12px; }
+.top .brand { font-weight: 700; font-size: 21px; letter-spacing: -.01em; }
+.top .brand span { color: var(--clawd); }
+.top .sp { flex: 1; }
+.top .now { font-family: var(--mono); font-size: 21px; display: flex; align-items: baseline; gap: 10px; transform-origin: right center; }
+.top .now .k { color: var(--faint); }
+.top .now .m { color: var(--clawd); font-weight: 700; }
+.top .count { font-family: var(--mono); font-size: 13px; color: var(--faint); min-width: 62px; text-align: right; }
+.hero { position: absolute; left: 304px; right: 16px; top: 150px; display: flex; justify-content: center; pointer-events: none; }
+.hero .card0 { background: rgba(21,21,21,.9); backdrop-filter: blur(8px); border: 1px solid #30302f; border-radius: 18px; padding: 24px 40px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+.hero h2 { font-size: 54px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+.hero h2 span { color: var(--clawd); }
+.hero p { margin-top: 8px; color: #a6a59f; font-size: 19px; }
+.hero code { display: inline-block; margin-top: 14px; font-size: 19px; color: var(--text); background: #212121; border: 1px solid #3a3a39; padding: 7px 14px; border-radius: 10px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+// ── The grid, in the real Code tab ─────────────────────────
+const ICON = {
+  laptop: '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#5b8fd9" stroke-width="1.4"><rect x="3" y="3" width="10" height="7.5" rx="1"/><path d="M1.5 13h13"/></svg>',
+  chev: '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>',
+  right: '<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg>',
+  term: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 4.5 6.5 8 3 11.5M8 12h5"/></svg>',
+  pane: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><path d="M5.5 6.5 8 4.5l2.5 2M8 4.5v6"/></svg>',
+  globe: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="5.8"/><path d="M2.2 8h11.6M8 2.2c-3 3.4-3 8.2 0 11.6M8 2.2c3 3.4 3 8.2 0 11.6"/></svg>',
+  more: '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3.5" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="12.5" r="1.2"/></svg>',
+  x: '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3l6 6M9 3 3 9"/></svg>',
+  plus: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 2v10M2 7h10"/></svg>',
+  mic: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="1.5" width="4" height="7" rx="2"/><path d="M3 7a4 4 0 0 0 8 0M7 11v2"/></svg>',
+  stop: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#d3d2cf" stroke-width="1.3"><circle cx="7" cy="7" r="5.6"/><circle cx="7" cy="7" r="2.2" fill="#d3d2cf" stroke="none"/></svg>',
+  enter: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M11.5 3v4.5h-8M6 5 3.5 7.5 6 10"/></svg>',
+}
+// The spinner beside the status line: an orange starburst.
+function burst(turn) {
+  const rays = Array.from({ length: 12 }, (_, i) => {
+    const a = (i / 12) * Math.PI * 2 + turn, r0 = 2.2, r1 = i % 2 ? 6.6 : 8.4
+    return `<path d="M${9 + r0 * Math.cos(a)} ${9 + r0 * Math.sin(a)}L${9 + r1 * Math.cos(a)} ${9 + r1 * Math.sin(a)}"/>`
+  }).join('')
+  return `<svg class="burst" viewBox="0 0 18 18" fill="none" stroke="#d36e52" stroke-width="1.6" stroke-linecap="round">${rays}<circle cx="9" cy="9" r="2.4" fill="#d36e52" stroke="none"/></svg>`
+}
+
+function appRow(r) {
+  switch (r.kind) {
+    case 'user': return `<div class="r-user"><div>${esc(r.text)}</div></div>`
+    case 'text': return `<div>${esc(r.text)}</div>`
+    case 'sum': return `<div class="r-sum">${esc(r.text)}${ICON.right}</div>`
+    case 'note': return `<div class="r-note">${esc(r.text)}</div>`
+    case 'stat': return `<div class="r-stat">${burst(r.turn)}<span>${esc(r.text)}</span></div>`
+  }
+  return ''
+}
+
+function appCard(c) {
+  if (!c) return ''
+  const n = (i) => `<b>${i}</b>`
+  if (c.kind === 'ask') {
+    const opts = c.options.map((o, i) => `<div class="opt"><span>${esc(o.label)}${o.desc ? `<small>${esc(o.desc)}</small>` : ''}</span>${n(i + 1)}</div>`).join('')
+    return `<div class="qcard"><div class="qt"><span>${esc(c.question)}</span><i>${ICON.chev}${ICON.x}</i></div>${opts}
+      <div class="opt other"><div style="display:flex"><span>Other</span>${n(c.options.length + 1)}</div><em>Type your own answer here</em></div>
+      <div class="btns"><span>Skip</span><span class="go">Submit</span></div></div>`
+  }
+  const opts = ['Allow once', 'Always allow for this project', 'Deny'].map((o, i) => `<div class="opt"><span>${o}</span>${n(i + 1)}</div>`).join('')
+  return `<div class="qcard"><div class="qt"><span>Allow Claude to run this command?</span><i>${ICON.x}</i></div><div class="cmd">$ ${esc(c.command)}</div>${opts}</div>`
+}
+
+// The Code tab itself: header, transcript, and the dock with Clawd's band.
+// `c.typed` is text being typed into the prompt.
+function appMain(c) {
+  const st = c.stage
+  const detail = st.detail ? `<span class="dim">&nbsp;&nbsp;${esc(st.detail)}</span>` : ''
+  const band = `<div class="band2"><div class="cap"><span style="color:${st.tint || 'var(--a-clay)'}">●&nbsp;</span><b>${esc(st.label)}</b>${detail}</div><div class="art">${st.svg}</div></div>`
+  const branch = c.branch ? `<div class="branch"><span>pixel-cafe</span><span>&nbsp;${esc(c.branch.name)}</span><span class="sp"></span>
+    <span class="diff"><i>+${c.branch.add}</i> <u>−${c.branch.del}</u></span><span class="pr">Create PR<em>${ICON.chev}</em></span><span class="x">${ICON.x}</span></div>` : ''
+  const prompt = c.typed ? `<span class="typed">${esc(c.typed)}<i class="caret"></i></span>` : '<span>Type / for commands</span>'
+  return `<div class="ahead"><span class="ico">${ICON.laptop}</span><span class="t">Add dark mode to settings</span><span class="chev">${ICON.chev}</span><span class="chip">pixel-cafe</span><span class="sp"></span>
+      <span class="tools">${ICON.term}${ICON.pane}${ICON.globe}${ICON.more}</span></div>
+    <div class="abody"><div class="acol ascroll">${c.rows.map(appRow).join('')}</div></div>
+    <div class="adock">${appCard(c.card)}${branch}${band}
+      <div class="ask">${prompt}${c.isWorking ? ICON.stop : ICON.enter}</div>
+      <div class="afoot">${ICON.plus}${ICON.mic}${ICON.chev}<span>Auto</span><span class="sp"></span><span>Opus 5.5</span><span>High</span><span class="ring"></span></div>
+    </div>`
+}
+
+function appCell(c) {
+  return `<div class="app">${appMain(c)}</div>`
+}
+
+window.appGrid = (cells, total) => {
+  document.getElementById('root').innerHTML = `<div class="sheet app-sheet">
+    <h1><span>clawd</span>-buddy</h1>
+    <div class="sub">${total} moods of a pixel Clawd who acts out what Claude is doing, shown in the Claude desktop app. Preview any of them with <code>/clawd &lt;mood&gt;</code></div>
+    <div class="grid app-grid">${cells.map((c, i) => `<div><div class="tag"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="m">${c.mood}</span></div>${appCell(c)}</div>`).join('')}</div>
+  </div>`
+}
+
+// ── The whole window, for the video ────────────────────────
+const SIDE_ICON = {
+  panel: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="1.5"/><path d="M6.5 2.5v11"/></svg>',
+  back: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M13 8H3.5M7.5 4 3.5 8l4 4"/></svg>',
+  fwd: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h9.5M8.5 4l4 4-4 4"/></svg>',
+  chat: '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6.5 3.5h0a4 4 0 0 1 0 8H3l1-1.6A4 4 0 0 1 6.5 3.5Z"/><path d="M9.6 5.2a4 4 0 0 1 2.9 6.5l.9 1.8H9.8"/></svg>',
+  code: '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5M9 3 7 13"/></svg>',
+  search: '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="4.5"/><path d="m10.4 10.4 3.1 3.1"/></svg>',
+  artifacts: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="5" r="2.6"/><circle cx="4.5" cy="11" r="2.4"/><rect x="9" y="8.6" width="4.8" height="4.8" rx=".6"/></svg>',
+  clock: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="5.6"/><path d="M8 4.8V8l2.2 1.4"/></svg>',
+  dispatch: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="4.5" width="6" height="9" rx="1.2"/><path d="M7 4.5V2.5M7.5 8h1"/></svg>',
+  bag: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2.5" y="5" width="11" height="8" rx="1.2"/><path d="M6 5V3.8h4V5M2.5 8.6h11"/></svg>',
+  down: '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="m3 5 4 4 4-4"/></svg>',
+  plus: '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 1.5v9M1.5 6h9"/></svg>',
+  cog: '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.8v2.4M8 11.8v2.4M1.8 8h2.4M11.8 8h2.4M3.6 3.6l1.7 1.7M10.7 10.7l1.7 1.7M3.6 12.4l1.7-1.7M10.7 5.3l1.7-1.7"/></svg>',
+}
+
+// Made-up sessions, so nobody's real ones end up in the video.
+const SESSIONS = [
+  ['pixel-cafe', [['Add dark mode to settings', 'on'], ['Fix flaky checkout test', 'unread'], ['Profile the image pipeline']]],
+  ['docs-site', [['Write release notes for 2.4'], ['Tidy the onboarding copy']]],
+  ['api', [['Migrate auth to passkeys'], ['Speed up the search index']]],
+]
+
+// `dot` is the open session's status: 'work', 'ask' (needs you) or 'idle'.
+const DOT = { work: 'busy', ask: 'needs', idle: '' }
+function appSide(dot) {
+  const groups = SESSIONS.map(([name, list]) => `<div class="grp"><span>${name}</span>${SIDE_ICON.plus}</div>` +
+    list.map(([title, state]) => {
+      const mark = state === 'on' ? DOT[dot] : state ?? ''
+      return `<div class="sess${state === 'on' ? ' on' : ''}"><i class="${mark}"></i>${esc(title)}</div>`
+    }).join('')).join('')
+  return `<div class="aside">
+    <div class="abar"><span class="lights"><i></i><i></i><i></i></span><span class="hist">${SIDE_ICON.panel}${SIDE_ICON.back}${SIDE_ICON.fwd}</span>
+      <span class="seg"><span>${SIDE_ICON.chat}</span><span class="on">${SIDE_ICON.code}</span></span></div>
+    <div class="find">${SIDE_ICON.search}<span>Search</span></div>
+    <div class="nav"><div><span class="plus">${SIDE_ICON.plus}</span>New</div><div>${SIDE_ICON.artifacts}Artifacts</div><div>${SIDE_ICON.clock}Routines</div>
+      <div>${SIDE_ICON.dispatch}Dispatch <small>Beta</small></div><div>${SIDE_ICON.bag}Customize</div><div class="dim">${SIDE_ICON.down}More</div></div>
+    ${groups}
+    <div class="me"><span class="av">IA</span>Ishu <small>· Max</small><span class="chev">${SIDE_ICON.down}</span><span class="cog">${SIDE_ICON.cog}</span></div>
+  </div>`
+}
+
+function appWindow(c) {
+  return `<div class="app win">${appSide(c.dot)}<div class="amain">${appMain(c)}</div></div>`
+}
+
+// One frame of the video.
+window.frame = s => {
+  const pulse = 1 + 0.07 * Math.max(0, 1 - s.beatT * 4)
+  const top = s.top
+    ? `<div class="top"><div class="brand"><span>clawd</span>-buddy</div><div class="sp"></div>
+        <div class="now" style="transform:scale(${pulse})"><span class="k">${esc(s.top.kicker)}</span><span class="m">${esc(s.top.title)}</span></div>
+        <div class="count">${esc(s.top.count ?? '')}</div></div>`
+    : ''
+  const hero = s.hero
+    ? `<div class="hero" style="opacity:${s.hero.opacity}"><div class="card0"><h2><span>clawd</span>-buddy</h2><p>${esc(s.hero.line)}</p>${s.hero.code ? `<code>${esc(s.hero.code)}</code>` : ''}</div></div>`
+    : ''
+  const fade = s.fade ? `<div style="position:absolute;inset:0;background:#000;opacity:${s.fade}"></div>` : ''
+  document.getElementById('root').innerHTML = `<div class="frame">${top}${appWindow(s.cell)}${hero}${fade}</div>`
+}
+</script>
+</body>
+</html>

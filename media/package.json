@@ -1,0 +1,17 @@
+{
+  "name": "clawd-buddy-media",
+  "private": true,
+  "type": "module",
+  "description": "Renders the clawd-buddy promo image and beat-synced video, with sound effects, from the mod's own engine",
+  "scripts": {
+    "music": "python3 src/music.py",
+    "sfx": "node src/cues.ts && python3 src/sfx.py",
+    "grid": "node src/render-grid.ts",
+    "video": "node src/render-video.ts",
+    "remux": "node src/render-video.ts --remux",
+    "all": "npm run music && npm run sfx && npm run grid && npm run video"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.12.0"
+  }
+}

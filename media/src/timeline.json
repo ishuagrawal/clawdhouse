@@ -1,0 +1,6 @@
+{
+  "bpm": 112.5,
+  "fps": 30,
+  "beats": { "intro": 8, "moods": 40, "reactions": 12, "outro": 4 },
+  "tail": 2.4
+}
