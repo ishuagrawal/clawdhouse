@@ -1,0 +1,16 @@
+{
+  "name": "claude-mods",
+  "owner": { "name": "Ishu Agrawal", "url": "https://github.com/ishuagrawal" },
+  "metadata": {
+    "description": "Mods for Claude Code: panes, bands and buddies built on function hooks"
+  },
+  "plugins": [
+    {
+      "name": "clawd-buddy",
+      "source": "./clawd-buddy",
+      "description": "A pixel Clawd in a side pane that reacts to what Claude is doing",
+      "version": "0.1.0",
+      "category": "fun"
+    }
+  ]
+}
