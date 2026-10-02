@@ -5,7 +5,7 @@
 import { SCENES } from './scenes.ts'
 import type { Row, Scene } from './scenes.ts'
 
-// The band the desktop app gives clawd-buddy above the prompt: 94 columns
+// The band the desktop app gives clawdhouse above the prompt: 94 columns
 // of 8 px across the 768 px conversation column, 11 rows (2 for the caption).
 export const BAND_COLS = 94
 export const BAND_ROWS = 11

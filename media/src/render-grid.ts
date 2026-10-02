@@ -1,5 +1,5 @@
 // Renders media/clawd-states.png: every mood in the Claude desktop app's
-// Code tab, as it looks with clawd-buddy loaded (page.html, `.app`).
+// Code tab, as it looks with clawdhouse loaded (page.html, `.app`).
 
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
@@ -28,7 +28,7 @@ const cells = SCENES.map((scene, i) => {
 // The page loads the app's own fonts from the installed app, over file://.
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--allow-file-access-from-files'] })
 const page = await browser.newPage()
-await page.setViewport({ width: 4424, height: 1000, deviceScaleFactor: 1 })
+await page.setViewport({ width: 6980, height: 1000, deviceScaleFactor: 1 })
 await page.goto(PAGE)
 await page.evaluate((c, n) => (window as any).appGrid(c, n), cells, SCENES.length)
 await page.evaluate(() => document.fonts.ready)

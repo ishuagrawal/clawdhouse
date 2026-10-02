@@ -66,6 +66,6 @@ export type Buddy = {
 
 declare module 'claude-code' {
   interface PluginState {
-    'clawd-buddy': { buddy: Buddy; frame: number; place: Place }
+    'clawdhouse': { buddy: Buddy; frame: number; place: Place }
   }
 }

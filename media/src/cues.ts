@@ -7,7 +7,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
-import { ART } from '../../clawd-buddy/hooks/engine.ts'
+import { ART } from '../../plugin/hooks/engine.ts'
 import { FPS, TL, play } from './shots.ts'
 import type { Played } from './shots.ts'
 

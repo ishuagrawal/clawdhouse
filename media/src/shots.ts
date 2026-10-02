@@ -141,7 +141,7 @@ function buildShots(): Shot[] {
         return {
           cell: cellAt(happy, stage),
           top: { kicker: 'all', title: 'done!' },
-          hero: beat >= 1.5 ? { line: 'Get Clawd for your Claude Code', code: '/plugin install clawd-buddy@clawdhouse', opacity: Math.min(1, (beat - 1.5) * 2) } : undefined,
+          hero: beat >= 1.5 ? { line: 'Get Clawd for your Claude Code', code: '/plugin install clawdhouse', opacity: Math.min(1, (beat - 1.5) * 2) } : undefined,
           fade: Math.max(0, (i - (total - 14)) / 14),
         }
       },

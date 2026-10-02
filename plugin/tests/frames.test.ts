@@ -1,10 +1,10 @@
 import { mock, test } from 'claude-code/testing'
 
 const PANE = (cols: number, rows: number) => ({
-  plugin: 'clawd-buddy',
+  plugin: 'clawdhouse',
   surface: 'terminal' as const,
   component: 'Pane' as const,
-  requestId: 'clawd-buddy',
+  requestId: 'clawdhouse',
   props: {
     title: 'Clawd',
     isFocused: false,

@@ -1,8 +1,8 @@
 // Every mood Clawd has, in the order a session might walk through them, with
 // what the Code tab would be showing at that moment. Labels, details and tints
-// are what clawd-buddy/hooks/register.tsx derives for the same tool call.
+// are what plugin/hooks/register.tsx derives for the same tool call.
 
-import type { Mood, ReactKind } from '../../clawd-buddy/types/index.d.ts'
+import type { Mood, ReactKind } from '../../plugin/types/index.d.ts'
 
 export type Row =
   | { kind: 'user'; text: string }

@@ -2,9 +2,9 @@
 // the same SVG the desktop app draws, stepped on a fixed clock with a seeded
 // random source so every render comes out identical.
 
-import { layout, newSim, step, toSvg } from '../../clawd-buddy/hooks/engine.ts'
-import type { Layout, Props, Sim } from '../../clawd-buddy/hooks/engine.ts'
-import type { ReactKind } from '../../clawd-buddy/types/index.d.ts'
+import { layout, newSim, step, toSvg } from '../../plugin/hooks/engine.ts'
+import type { Layout, Props, Sim } from '../../plugin/hooks/engine.ts'
+import type { ReactKind } from '../../plugin/types/index.d.ts'
 import type { Scene } from './scenes.ts'
 
 // The stage the desktop app gives the band: 96 columns, 16 rows (2 caption).

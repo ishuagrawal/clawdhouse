@@ -1,4 +1,4 @@
-"""An original chiptune for the clawd-buddy video, synthesized from scratch.
+"""An original chiptune for the clawdhouse video, synthesized from scratch.
 
 Pulse-wave lead and harmony, a stepped triangle bass and noise drums, laid
 out on the same beat grid as the video (src/timeline.json): a two-bar

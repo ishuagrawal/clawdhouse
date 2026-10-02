@@ -1,13 +1,13 @@
 # media
 
-The clawd-buddy promo image and video, and the code that makes them.
+The clawdhouse promo image and video, and the code that makes them.
 
 | File | What it is |
 | --- | --- |
 | [clawd-states.png](./clawd-states.png) | All 40 moods, each in its own Code tab of the Claude desktop app |
 | [clawd-beat.mp4](./clawd-beat.mp4) | 36 s, 1080p: one session in the desktop app, with a new mood on every beat of an original chiptune, each with its own sound effect, then the reactions |
 
-Clawd isn't drawn by hand here. Every frame comes from the mod's own engine (`clawd-buddy/hooks/engine.ts`), stepped on a fixed clock with a seeded random source, so the image and video show exactly what the mod draws, and the same frames come out every time. The desktop app around him is rebuilt in HTML (`src/page.html`) from screenshots of the real app with clawd-buddy loaded, in the app's own font, and screenshotted in headless Chrome. The band he stands in is the size the app gives the mod: 94 columns by 11 rows, 8 px a pixel. The sessions in the sidebar are made up.
+Clawd isn't drawn by hand here. Every frame comes from the plugin's own engine (`plugin/hooks/engine.ts`), stepped on a fixed clock with a seeded random source, so the image and video show exactly what the plugin draws, and the same frames come out every time. The desktop app around him is rebuilt in HTML (`src/page.html`) from screenshots of the real app with clawdhouse loaded, in the app's own font, and screenshotted in headless Chrome. The band he stands in is the size the app gives the plugin: 94 columns by 11 rows, 8 px a pixel. The sessions in the sidebar are made up.
 
 The sound effects are cued from those same frames. `src/cues.ts` plays the video without drawing it and notes each cut, each key typed into the prompt and each thing the engine does on screen: a reaction pops, confetti bursts, the rocket counts down. `src/sfx.py` then synthesizes an 8-bit sound for every cue, pitched to the chord playing at that moment, and mixes them over the music.
 

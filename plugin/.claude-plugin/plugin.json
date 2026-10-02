@@ -1,9 +1,9 @@
 {
-  "name": "clawd-buddy",
+  "name": "clawdhouse",
   "version": "0.1.0",
   "description": "A pixel Clawd in a side pane that reacts to what Claude is doing",
   "author": { "name": "Ishu Agrawal", "url": "https://github.com/ishuagrawal" },
-  "homepage": "https://github.com/ishuagrawal/clawdhouse/tree/main/clawd-buddy",
+  "homepage": "https://github.com/ishuagrawal/clawdhouse",
   "repository": "https://github.com/ishuagrawal/clawdhouse",
   "license": "MIT",
   "keywords": ["mod", "pet", "buddy", "pixel-art"],

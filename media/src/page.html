@@ -29,7 +29,7 @@ code, .mono { font-family: var(--mono); }
 .tag .m { color: var(--text); font-size: 17px; font-weight: 600; }
 
 /* ── The real Code tab (desktop app, dark), for the grid ──── */
-/* Measured from screenshots of the Claude desktop app with clawd-buddy
+/* Measured from screenshots of the Claude desktop app with clawdhouse
    loaded. The fonts are the app's own, read from the installed app. */
 @font-face { font-family: "Anthropic Sans"; font-weight: 300 800; src: url("file:///Applications/Claude.app/Contents/Resources/fonts/AnthropicSans-Romans-Variable-25x258.ttf"); }
 @font-face { font-family: "Anthropic Sans"; font-style: italic; font-weight: 300 800; src: url("file:///Applications/Claude.app/Contents/Resources/fonts/AnthropicSans-Italics-Variable-25x258.ttf"); }
@@ -86,7 +86,7 @@ code, .mono { font-family: var(--mono); }
 .app .afoot .sp { flex: 1; }
 .app .afoot .ring { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #2b2b2b; border-top-color: #4a8ff0; }
 .app-sheet { font-family: "Anthropic Sans", var(--sans); }
-.app-grid { grid-template-columns: repeat(5, 820px); gap: 44px 32px; }
+.app-grid { grid-template-columns: repeat(8, 820px); gap: 44px 32px; }
 
 /* ── The whole window: the app's sidebar beside the Code tab ─ */
 /* Measured from the same screenshots. The sessions listed are made up. */
@@ -222,7 +222,7 @@ function appCell(c) {
 
 window.appGrid = (cells, total) => {
   document.getElementById('root').innerHTML = `<div class="sheet app-sheet">
-    <h1><span>clawd</span>-buddy</h1>
+    <h1><span>clawd</span>house</h1>
     <div class="sub">${total} moods of a pixel Clawd who acts out what Claude is doing, shown in the Claude desktop app. Preview any of them with <code>/clawd &lt;mood&gt;</code></div>
     <div class="grid app-grid">${cells.map((c, i) => `<div><div class="tag"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="m">${c.mood}</span></div>${appCell(c)}</div>`).join('')}</div>
   </div>`
@@ -279,12 +279,12 @@ function appWindow(c) {
 window.frame = s => {
   const pulse = 1 + 0.07 * Math.max(0, 1 - s.beatT * 4)
   const top = s.top
-    ? `<div class="top"><div class="brand"><span>clawd</span>-buddy</div><div class="sp"></div>
+    ? `<div class="top"><div class="brand"><span>clawd</span>house</div><div class="sp"></div>
         <div class="now" style="transform:scale(${pulse})"><span class="k">${esc(s.top.kicker)}</span><span class="m">${esc(s.top.title)}</span></div>
         <div class="count">${esc(s.top.count ?? '')}</div></div>`
     : ''
   const hero = s.hero
-    ? `<div class="hero" style="opacity:${s.hero.opacity}"><div class="card0"><h2><span>clawd</span>-buddy</h2><p>${esc(s.hero.line)}</p>${s.hero.code ? `<code>${esc(s.hero.code)}</code>` : ''}</div></div>`
+    ? `<div class="hero" style="opacity:${s.hero.opacity}"><div class="card0"><h2><span>clawd</span>house</h2><p>${esc(s.hero.line)}</p>${s.hero.code ? `<code>${esc(s.hero.code)}</code>` : ''}</div></div>`
     : ''
   const fade = s.fade ? `<div style="position:absolute;inset:0;background:#000;opacity:${s.fade}"></div>` : ''
   document.getElementById('root').innerHTML = `<div class="frame">${top}${appWindow(s.cell)}${hero}${fade}</div>`

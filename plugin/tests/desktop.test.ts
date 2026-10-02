@@ -14,7 +14,7 @@ test('desktop draws Clawd from the host', async ($, on: any) => {
   on('command.run', () => ({ text: 'base' }))
   await T.session.start({ source: 'startup', cwd: '/tmp', model: 'x', sessionId: 's' })
   const ui: any = await $.ui.mount({
-    plugin: 'clawd-buddy',
+    plugin: 'clawdhouse',
     surface: 'desktop',
     component: 'AbovePrompt',
     props: { hasSurvey: false, isWorking: true, maxRows: 24, bodyColumns: 96, scroll: { offset: 0, bodyRows: 24 }, view: {} } as any,

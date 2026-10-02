@@ -7,13 +7,13 @@ import type { Props as SimProps, Sim } from './engine'
 
 // What Clawd calls you: the `name` option (/config), set again on each load.
 let OWNER = 'friend'
-const PANE = 'clawd-buddy'
+const PANE = 'clawdhouse'
 // Rows the stage above the prompt takes: room for a hat or a thought above him.
 const STAGE_ROWS = 16
 const SLEEP_AFTER_MS = 90_000
 const SETTLE_MS = 6_000
 
-const buddy = atom({ plugin: 'clawd-buddy', key: 'buddy' } as const, {
+const buddy = atom({ plugin: 'clawdhouse', key: 'buddy' } as const, {
   mood: 'idle',
   detail: '',
   since: 0,
@@ -341,8 +341,8 @@ let latest: Buddy | null = null
 // Surfaces whose Client can't run (the desktop app's sandbox refuses it) get
 // Clawd from here: this module steps the same engine and redraws the pane.
 const HOST_FPS = 8
-const frame = atom({ plugin: 'clawd-buddy', key: 'frame' } as const, 0)
-const place = atom({ plugin: 'clawd-buddy', key: 'place' } as const, 'stage' as Place)
+const frame = atom({ plugin: 'clawdhouse', key: 'frame' } as const, 0)
+const place = atom({ plugin: 'clawdhouse', key: 'place' } as const, 'stage' as Place)
 let hostSim: Sim | null = null
 let hostSize = { cols: 0, rows: 0 }
 let hostSeenAt = 0
@@ -425,7 +425,7 @@ export const register: Register = (on, options) => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
       name: 'clawd',
-      description: 'Open the Clawd buddy pane (or /clawd <mood> to preview one)',
+      description: 'Show Clawd (or /clawd <mood> to preview one)',
     })
     lastChange = await $.clock.now()
 
@@ -447,7 +447,7 @@ export const register: Register = (on, options) => {
       })
     })
 
-    if ((await $.state.get({ plugin: 'clawd-buddy', key: 'place' } as const)).value === 'pane') {
+    if ((await $.state.get({ plugin: 'clawdhouse', key: 'place' } as const)).value === 'pane') {
       void $.ui.open({ id: PANE, title: 'Clawd' })
     }
     const hour = hourNow()
@@ -459,7 +459,7 @@ export const register: Register = (on, options) => {
 
   on('command.run', { command: 'clawd' }, async ($, e) => {
     const [ask, extra] = e.args.trim().split(/\s+/) as [string, string?]
-    const where = (await $.state.get({ plugin: 'clawd-buddy', key: 'place' } as const)).value ?? 'stage'
+    const where = (await $.state.get({ plugin: 'clawdhouse', key: 'place' } as const)).value ?? 'stage'
 
     if (ask === 'pane') {
       await update($, place, () => 'pane' as Place)

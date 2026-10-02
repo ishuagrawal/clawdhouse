@@ -1,4 +1,4 @@
-"""Sound effects for the clawd-buddy video, synthesized from scratch.
+"""Sound effects for the clawdhouse video, synthesized from scratch.
 
 Reads the cues src/cues.ts found in the video's frames (each cut to a new
 mood, each key typed, each thing Clawd's engine does on screen) and gives

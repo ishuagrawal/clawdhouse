@@ -2,12 +2,12 @@
   "name": "clawdhouse",
   "owner": { "name": "Ishu Agrawal", "url": "https://github.com/ishuagrawal" },
   "metadata": {
-    "description": "Mods for Claude Code: panes, bands and buddies built on function hooks"
+    "description": "A pixel Clawd who keeps you company while Claude works"
   },
   "plugins": [
     {
-      "name": "clawd-buddy",
-      "source": "./clawd-buddy",
+      "name": "clawdhouse",
+      "source": "./plugin",
       "description": "A pixel Clawd in a side pane that reacts to what Claude is doing",
       "version": "0.1.0",
       "category": "fun"

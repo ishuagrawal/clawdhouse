@@ -1,8 +1,8 @@
 {
-  "name": "clawd-buddy-media",
+  "name": "clawdhouse-media",
   "private": true,
   "type": "module",
-  "description": "Renders the clawd-buddy promo image and beat-synced video, with sound effects, from the mod's own engine",
+  "description": "Renders the clawdhouse promo image and beat-synced video, with sound effects, from the mod's own engine",
   "scripts": {
     "music": "python3 src/music.py",
     "sfx": "node src/cues.ts && python3 src/sfx.py",
